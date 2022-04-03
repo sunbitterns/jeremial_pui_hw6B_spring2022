@@ -1,0 +1,192 @@
+/* APPT BOOKING PAGES */
+
+/* Sidebar */
+
+.sidebar {
+    background: var(--sidebar);
+    position: absolute;
+    width: 260px;
+    height: 100%;  
+}
+
+.sidebar ul {
+    list-style: none;
+    margin-top: 28px;
+    
+}
+
+.sidebar ul li a {
+    display: block;
+    color: var(--black);
+    font-size: 16px;
+    position: relative;
+    text-decoration: none;
+    font-weight: bold;
+
+    border-radius: 10px;
+    padding: 10px;
+    width: 188px;
+    margin-bottom: 6px;
+}
+
+.sidebar ul li a .icon {
+    color: var(--black);
+    width: 26px;
+    display: inline-block;
+}
+
+.sidebar ul li a:hover {
+    color: var(--red);
+}
+.sidebar ul li a.active {
+    color: var(--white);
+    background: var(--red);
+}
+
+.sidebar ul li a:hover .icon {
+    color: var(--red)
+}
+
+.sidebar ul li a.active .icon {
+    color: var(--white);
+}
+
+/* Appointment Detail */
+
+.block {
+    display: block;
+    margin: 44px 50px 0px 300px;
+    width: 75%;
+    color: var(--white);
+    background-color: var(--dark-gray);
+    text-align: left;
+    font-size: 16px;
+    padding: 18px;
+}
+
+.appt-container {
+    position: relative;
+    margin-top: 64px;
+    margin-left: 350px;
+    font-size: 16px;
+}
+
+.appt-container h1 {
+    font-size: 38px;
+    margin-bottom: 24px;
+}
+
+.appt-container h2 {
+    font-style: normal;
+    font-weight: normal;
+    margin-bottom: 64px;
+}
+
+.appt-container h2 a {
+    color: var(--black);
+    border-bottom: 1px solid var(--red);
+    text-decoration: none;
+}
+
+.appt-container h3 {
+    margin-bottom: 10px;
+    font-weight: normal;
+    font-size: 22px;
+}
+
+.appt-container i {
+    margin-left: 10px;
+    color:var(--red);
+}
+
+.appt-container p {
+    margin-bottom: 32px;
+}
+
+.flex {
+    display: flex; 
+    flex-direction: row;
+    gap: 180px;
+}
+
+.question {
+    font-weight: bold;
+    margin-top: 40px;
+    margin-bottom: 10px;
+}
+
+.red {
+    color: var(--red);
+}
+
+#displayTypePlace {
+    font-size: 22px;
+}
+
+/* Button Styling */
+button {   
+    font-size: 18px;
+    text-decoration: none;
+    border-radius: 6px;
+    padding: 8px 20px;
+    display: inline-block;
+    text-align: center;
+    border: none;
+    margin-right: 10px;
+}
+
+button a {
+    color:var(--white);
+    text-decoration: none;
+}
+
+.buttonGray {
+    background-color: var(--gray);
+    color: var(--white);
+}
+
+.buttonRed {
+    background-color:var(--red);
+    color: var(--white);
+}
+
+.buttonGray:hover {
+    background-color: var(--gray-hover);
+    color: var(--white);
+}
+
+.buttonRed:hover {
+    background-color: var(--red-hover);
+    color: var(--white);
+}
+
+#schedule {
+    position: absolute;
+    top: 5%;
+    left: 75%;
+}
+
+/* Form  Input Styling */
+
+.custom-select {
+    position: relative;
+    font-family: Arial;
+}
+
+select {
+    -webkit-appearance: none !important;
+    -moz-appearance: none !important;
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAUCAMAAACtdX32AAAAdVBMVEUAAAD///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAhMdQaAAAAJ3RSTlMAAAECAwQGBwsOFBwkJTg5RUZ4eYCHkJefpaytrsXGy8zW3+Do8vNn0bsyAAAAYElEQVR42tXROwJDQAAA0Ymw1p9kiT+L5P5HVEi3qJn2lcPjtIuzUIJ/rhIGy762N3XaThqMN1ZPALsZPEzG1x8LrFL77DHBnEMxBewz0fJ6LyFHTPL7xhwzWYrJ9z22AqmQBV757MHfAAAAAElFTkSuQmCC);
+    background-position: 100%;
+    background-repeat: no-repeat;
+    padding: 0.5rem;
+    border-radius: 0;
+}
+
+.custom-select {
+    width: 300px;
+    height: 40px;
+    padding-left: 20px;
+    border-color: var(--red);
+    font-size: 14px;
+}

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie-edge">
+    <title>Tartan Testing</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <link rel="stylesheet" href="css/booking.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://kit.fontawesome.com/ee365708f3.js" crossorigin="anonymous"></script>
+    <script src="main.js"></script>
+</head>
+
+<body onload="loadBooking2()">
+    
+    <div class="nav-container">
+        <nav>
+            <div class="logo">
+                <a href="index.html">HealthConnect</a>
+            </div>
+
+            <ul class="nav-items">
+                <li>
+                    <a href="#">Andrew Carnegie</a>
+                </li>
+
+                <li>
+                    <a class="nav-btn-container" href="index.html">
+                        <img class="dropdown" src="images/dropdown.png" alt="dropdown">
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    
+    <div class="sidebar">
+        <ul>
+            <li>
+                <a href="appointments.html" class="active">
+                    <span class="icon"><i class="fa-regular fa-calendar-check"></i></span>
+                    Appointments
+                </a>
+            </li>
+
+            <li>
+                <a href="#">
+                    <span class="icon"><i class="fa-solid fa-syringe"></i></span>
+                    Immnunizations
+                </a>
+            </li>
+
+            <li>
+                <a href="#">
+                    <span class="icon"><i class="fa-solid fa-user"></i></span>
+                    Profile
+                </a>
+            </li>
+
+        </ul>
+    </div>
+
+    <div class="appt-container">
+        <img src="images/stepper2.png" alt="2. Schedule Appointment""></img>
+        <br></br><br></br>
+
+        <h1>Schedule Appointment</h1>
+        <p>
+            Please select an appointment date and time. Tartan testing is by appointment only and is provided at no
+            cost. <br> Appointments are ONLY available in one week increments and refresh every Friday at 11:59PM. 
+        </p>
+
+        <p id="displayTypePlace"></p>
+
+        <select class="custom-select" id="dateSel">
+            <option value="Monday">Monday</option>
+            <option value="Tuesday">Tuesday</option>
+            <option value="Wednesday">Wednesday</option>
+            <option value="Thursday">Thursday</option>
+            <option value="Friday">Friday</option>
+        </select>
+
+        <select class="custom-select" id="timeSel">
+            <option value="08:15">08:15 AM</option>
+            <option value="08:30">08:30 AM</option>
+            <option value="9:30">9:30 AM</option>
+            <option value="1:30">1:30 PM</option>
+            <option value="2:00">2:00 PM</option>
+        </select>
+
+        <br></br>
+
+        <button class="buttonGray">
+            <a href="booking-1.html">Back</a>
+        </button>
+        <button class="buttonGray">
+            <a href="index.html">Cancel</a>
+        </button>
+        <button class="buttonRed" onclick="saveTimeDate()">
+            <a href="booking-3.html">Continue</a>
+        </button>
+    </div>
+
+</body>
+
+</html>

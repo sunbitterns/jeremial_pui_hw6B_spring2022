@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie-edge">
+    <title>Tartan Testing</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <link rel="stylesheet" href="css/booking.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://kit.fontawesome.com/ee365708f3.js" crossorigin="anonymous"></script>
+    <script src="main.js"></script>
+</head>
+
+<body onload = "loadDetail()">
+
+    <div class="nav-container">
+        <nav>
+            <div class="logo">
+                <a href="index.html">HealthConnect</a>
+            </div>
+
+            <ul class="nav-items">
+                <li>
+                    <a href="#">Andrew Carnegie</a>
+                </li>
+
+                <li>
+                    <a class="nav-btn-container" href="index.html">
+                        <img class="dropdown" src="images/dropdown.png" alt="dropdown">
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    
+    <div class="sidebar">
+        <ul>
+            <li>
+                <a href="#" class="active">
+                    <span class="icon"><i class="fa-regular fa-calendar-check"></i></span>
+                    Appointments
+                </a>
+            </li>
+
+            <li>
+                <a href="#">
+                    <span class="icon"><i class="fa-solid fa-syringe"></i></span>
+                    Immnunizations
+                </a>
+            </li>
+
+            <li>
+                <a href="#">
+                    <span class="icon"><i class="fa-solid fa-user"></i></span>
+                    Profile
+                </a>
+            </li>
+
+        </ul>
+    </div>
+
+    <button class="block">
+        <a href="appointments.html">
+            <i class="fa-solid fa-arrow-left"></i>
+            My Appointments
+        </a>
+    </button>
+
+    <div class="appt-container">
+        <h1>Appointment Details</h1>
+
+        <div class="flex">
+            <div>
+                <p>
+                    Appointment details have been sent to your email.<br>
+                    Please arrive 15 minutes early with your student ID,<br>
+                    vaccine card, and QR code ready.
+                </p>
+
+                <h3 id="dateProp"></h3>
+                <h3 id="timeProp"></h3>
+                <h3 id="typeProp"></h3>
+                <h3 id="placeProp"></h3>
+
+                <br></br>
+                <br></br>
+        
+                <!--<h2>
+                     <b>Date:</b>
+                        <a href="#">Wednesday, February 9th, 2022</a>
+                        <i class="fa-solid fa-calendar-plus fa-sm"></i><br>
+                    <b>Time:</b> 9:50 AM<br>
+                    <b>Visit Type:</b> COVID-19 Booster (Pfizer)<br>
+                    <b>Location:</b>
+                        <a href="#">UHS (University Health Services)</a>
+                        <i class="fa-solid fa-location-dot fa-sm"></i><br>
+                </h2>-->
+
+                <button class="buttonGray"">
+                    <a href="#">Cancel Appointment</a>
+                </button>
+                <button class="buttonRed">
+                    <a href="#">Change Appointment</a>
+                </button>
+            </div>
+
+            <div>
+                <img src="images/qr.png" alt="QR code">
+            </div>      
+    </div>
+    
+</body>
+
+</html>
