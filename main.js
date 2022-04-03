@@ -31,7 +31,7 @@ var appts = [];
 localStorage.setItem("storeAppts", JSON.stringify(appts));
 
 /* Booking 1: Basic Info 
-   Save Appt Time and Location */
+   Save appointment Time and Location */
 function saveApptType() {
     // Retrieve user input for appointment type
     var apptType = document.getElementById("type").value;
@@ -48,22 +48,23 @@ function saveApptType() {
     localStorage.setItem("apptLocation", JSON.stringify(apptLocation));
 }
 
-/* Booking 2: Timeslots */
-function saveTime() {
+/* Booking 2: Schedule Appt */
+
+// Save appointment time and date 
+function saveApptTime() {
     // Retrieve user input for timeslot
-    var timeSelect = document.getElementById("timeSel");
-    var timeInput = timeSelect.options[timeSelect.selectedIndex].text;
+    var apptTime = document.getElementById("timeSel").value;
 
     // Retrieve user input for date
-    var dateSelect = document.getElementById("dateSel");
-    var dateInput = dateSelect.options[dateSelect.selectedIndex].text;
+    var apptDate = document.getElementById("dateSel").value;
 
     // Store time and date
-    localStorage.setItem("storeTime", JSON.stringify(timeInput));
-    localStorage.setItem("storeDate", JSON.stringify(dateInput));
+    localStorage.setItem("apptTime", JSON.stringify(apptTime));
+    localStorage.setItem("apptDate", JSON.stringify(apptDate));
 }
 
-function loadBooking2() {
+// Display previously selected appointment type and location 
+function displayApptType() {
     var apptType = JSON.parse(localStorage.getItem("apptType"));
     var apptLocation = JSON.parse(localStorage.getItem("apptLocation"));
 
@@ -73,10 +74,9 @@ function loadBooking2() {
 }
 
 /* Booking 3: Confirmation */
-function loadBooking3() {
+function displayApptConfirmation() {
     
     // Check list state 
-    var initList = JSON.parse(localStorage.getItem("storeAppts"));
     var currList = JSON.parse(localStorage.getItem("newApptList"));
     if (currList != null) {
         var apptList = JSON.parse(localStorage.getItem("newApptList"));
@@ -85,8 +85,8 @@ function loadBooking3() {
     }
 
     var newAppt = new Appointment (
-        JSON.parse(localStorage.getItem("storeTime")),
-        JSON.parse(localStorage.getItem("storeDate")),
+        JSON.parse(localStorage.getItem("apptTime")),
+        JSON.parse(localStorage.getItem("apptDate")),
         JSON.parse(localStorage.getItem("apptType")),
         JSON.parse(localStorage.getItem("apptLocation")),
         "", "Change Appointment"
