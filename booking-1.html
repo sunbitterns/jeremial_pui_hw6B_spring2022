@@ -13,19 +13,19 @@
     <script src="main.js"></script>
 </head>
 
-<body onload="loadBooking1()">
+<body>
     
+    <!-- Navigation Bar Start -->
     <div class="nav-container">
         <nav>
             <div class="logo">
                 <a href="index.html">HealthConnect</a>
             </div>
-
+            
             <ul class="nav-items">
                 <li>
                     <a href="#">Andrew Carnegie</a>
                 </li>
-
                 <li>
                     <a class="nav-btn-container" href="index.html">
                         <img class="dropdown" src="images/dropdown.png" alt="dropdown">
@@ -34,7 +34,9 @@
             </ul>
         </nav>
     </div>
+    <!-- Navigation Bar End -->
     
+    <!-- Sidebar Start -->
     <div class="sidebar">
         <ul>
             <li>
@@ -60,7 +62,9 @@
 
         </ul>
     </div>
+    <!-- Sidebar End -->
 
+    <!-- Appt. Container Start -->
     <div class="appt-container">
         <img src="images/stepper1.png" alt="Step 1. Basic Info"></img>
         <br></br><br></br>
@@ -71,42 +75,50 @@
             <strong>For life threatening problems, please call 911 or go to the nearest emergency room.</strong> 
         </p>
 
-        <div class="appt-form">
+        <!-- Appt. Form (1) Basic Info Start 
+             TO-DO: Fix required functionality !-->
+        <form>
 
             <div class="question"><span class="red">*</span>
                 1. Have you had any symptoms or have tested positive 
                 for COVID-19 in the past 90 days?</div>
-                <input type="radio" name="symptoms" value="yes">
+                <input type="radio" id="yes" value="yes" name="symptoms" required>
                 <label for="yes">Yes</label>
                 <br>
-                <input type="radio" name="symptoms" value="no">
+                <input type="radio" id="no" value="no" name="symptoms">
                 <label for="no">No</label><br>
 
             <div class="question"><span class="red">*</span>
                 2. Select your primary campus status.</div>
-                <input type="radio" name="status" value="student">
-                <label for="vaccine">CMU degree-seeking student</label>
+                <input type="radio" id="student" value="student" name="status" required>
+                <label for="student">CMU degree-seeking student</label>
                 <br>
-                <input type="radio"  name="status" value="faculty">
-                <label for="test">Faculty, staff, and all others</label>
+                <input type="radio" id="faculty" value="faculty" name="status" required>
+                <label for="faculty">Faculty, staff, and all others</label>
 
 
             <div class="question"><span class="red">*</span>
                 3. Select a reason for your visit.</div>
-                <select class="custom-select" name="type" id="typeSel">
+                <select class="custom-select" id="type" name="type" required>
                     <option value="Tartan Testing">Tartan Testing</option>
                     <option value="COVID-19 Vaccine">COVID-19 Vaccine</option>
                     <option value="COVID-19 Booster">COVID-19 Booster</option>
                 </select>
-
+            
+            <!--  Cancel/Continue Buttons Start -->
             <br></br><br></br>
             <button class="buttonGray">
                 <a href="index.html">Cancel</a>
             </button>
-            <button class="buttonRed" onclick="saveTypePlace()">
+            
+            <button type="submit" class ="buttonRed"
+            onclick="saveApptType()">
                 <a href="booking-2.html">Continue</a>
             </button>
-        </div>
+            <!--  Cancel/Continue Buttons End-->
+
+        </form>
+        <!-- Appt Form (1) End-->
     </div>
 
 </body>

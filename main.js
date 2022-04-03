@@ -30,26 +30,22 @@ let appt2 = new Appointment (
 var appts = [];
 localStorage.setItem("storeAppts", JSON.stringify(appts));
 
-/* Booking 1: Basic Info */
-function saveTypePlace() {
+/* Booking 1: Basic Info 
+   Save Appt Time and Location */
+function saveApptType() {
     // Retrieve user input for appointment type
-    var typeSelect = document.getElementById("typeSel");
-    var typeInput = typeSelect.options[typeSelect.selectedIndex].text;
+    var apptType = document.getElementById("type").value;
 
     // Set location based on type of appointment 
-    var placeInput = "";
-    if (typeInput == "Tartan Testing") {
-        placeInput = "TCS (Tata Consultancy Services)";
+    var apptLocation = "";
+    if (apptType == "Tartan Testing") {
+        apptLocation = "TCS (Tata Consultancy Services)";
     } else ( // Booster or Vaccine
-        placeInput = "UHS (University Health Services)"
+    apptLocation = "UHS (University Health Services)"
     )
     // Store type and place  
-    localStorage.setItem("storeType", JSON.stringify(typeInput));
-    localStorage.setItem("storePlace", JSON.stringify(placeInput));
-}
-
-function loadBooking1() {
-    saveTypePlace();
+    localStorage.setItem("storeType", JSON.stringify(apptType));
+    localStorage.setItem("storePlace", JSON.stringify(apptLocation));
 }
 
 /* Booking 2: Timeslots */
