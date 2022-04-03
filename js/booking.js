@@ -8,30 +8,9 @@ function Appointment (time, date, type, place, comment, details) {
     this.details = details;
 }
 
-/* Appointment History 
-let appt1 = new Appointment (
-    "8:30 AM", 
-    "1/5/2022",
-    "Tartan SARS-CoV-2 Assay",
-    "TTS",
-    "NEGATIVE",
-    "View Report"
-)
+/* Booking 1: Basic Info*/
 
-let appt2 = new Appointment (
-    "8:30 AM", 
-    "1/5/2022",
-    "Tartan SARS-CoV-2 Assay",
-    "TTS",
-    "NEGATIVE",
-    "View Report"
-)*/
-
-var appts = [];
-localStorage.setItem("storeAppts", JSON.stringify(appts));
-
-/* Booking 1: Basic Info 
-   Save appointment Time and Location */
+// Save appointment Time and Location
 function saveApptType() {
     // Retrieve user input for appointment type
     var apptType = document.getElementById("type").value;
@@ -74,26 +53,17 @@ function displayApptType() {
 }
 
 /* Booking 3: Confirmation */
+// Display selected appointment details
 function displayApptConfirmation() {
     
-    // Check list state 
-    var currList = JSON.parse(localStorage.getItem("newApptList"));
-    if (currList != null) {
-        var apptList = JSON.parse(localStorage.getItem("newApptList"));
-    } else {
-        apptList = JSON.parse(localStorage.getItem("storeAppts"));
-    }
-
-    var newAppt = new Appointment (
+    // Create new appointment based on user input
+    var newAppt = new Appointment(
         JSON.parse(localStorage.getItem("apptTime")),
         JSON.parse(localStorage.getItem("apptDate")),
         JSON.parse(localStorage.getItem("apptType")),
         JSON.parse(localStorage.getItem("apptLocation")),
-        "", "Change Appointment"
+        "", "Edit"
     )
-
-    apptList.push(newAppt);
-    localStorage.setItem("newApptList", JSON.stringify(apptList)); 
 
     // Display appointment details 
     document.getElementById("dateProp").innerHTML = 
@@ -104,39 +74,9 @@ function displayApptConfirmation() {
         "<strong>Visit Type:</strong> " + newAppt.type;
     document.getElementById("placeProp").innerHTML = 
         "<strong>Location:</strong> " + newAppt.place;
-}
 
-// All Appointments
-function loadApptList() {
-    var allAppts = JSON.parse(localStorage.getItem("newApptList"));
-    console.log(allAppts);
-    if (allAppts == null) {
-        var apptNumber = 0;
-    } else {
-        apptNumber = allAppts.length;
-        
-        // Display number of appointments 
-        document.getElementById("apptN").innerHTML = 
-        "Appointments (" + apptNumber + ")";
-
-        document.getElementById("apptList").innerHTML = 
-            allAppts[apptNumber-1].date + " at " 
-            + allAppts[apptNumber-1].time + "<br>" + 
-            allAppts[apptNumber-1].type + 
-            "<br> <a href='appt-detail.html'>View/Change Appointment</a> <br></br>"
-    }
-}
-
-function loadDetail() {
-    var appts = JSON.parse(localStorage.getItem("newApptList"));
-    var selectedAppt = appts[appts.length - 1];
-    // Display appointment details 
-    document.getElementById("dateProp").innerHTML = 
-        "<strong>Date:</strong> " + selectedAppt.date;
-    document.getElementById("timeProp").innerHTML = 
-        "<strong>Time:</strong> "+ selectedAppt.time;
-    document.getElementById("typeProp").innerHTML = 
-        "<strong>Visit Type:</strong> " + selectedAppt.type;
-    document.getElementById("placeProp").innerHTML = 
-        "<strong>Location:</strong> " + selectedAppt.place;
+    // Retrieve existing appts and push new appt into array
+    var appts = JSON.parse(localStorage.getItem("appts")) || [];
+    appts.push(newAppt);
+    localStorage.setItem("appts", JSON.stringify(appts));
 }
