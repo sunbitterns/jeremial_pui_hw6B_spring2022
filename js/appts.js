@@ -1,5 +1,32 @@
+function loadAppts() {
+    appts = JSON.parse(sessionStorage.getItem("appts"));
+    console.log(appts);
+
+    let html = "<table border='1|1'";
+    for (let i = 0; i < appts.length; i++) {
+        html+="<tr>";
+        html+="<td>"+appts[i].date+"</td>";
+        html+="<td>"+appts[i].time+"</td>";
+        html+="<td>"+appts[i].type+"</td>";
+        html+="<td>"+appts[i].location+"</td>";
+        html+="<td>"+appts[i].comment+"</td>";
+        html+="<td>"+appts[i].details+"</td>";
+        html+="<tr>";
+    }
+    html+="</table>";
+    document.getElementById("appts").innerHTML = html;
+
+}
+
+/* Cancel selected Appointment */
+function cancelAppt(i) {
+    appts.splice(i, 1);
+    sessionStorage.setItem("appts", JSON.stringify(appts));
+}
+
+
 // All Appointments
-function loadApptList() {
+/* function loadApptList() {
     var allAppts = JSON.parse(localStorage.getItem("newApptList"));
     console.log(allAppts);
     if (allAppts == null) {
@@ -38,7 +65,7 @@ function loadAppointments() {
 }
 
 
-/* Appointment History 
+Appointment History 
 let appt1 = new Appointment (
     "8:30 AM", 
     "1/5/2022",
