@@ -124,6 +124,7 @@
 }
 
 /* Button Styling */
+
 button {   
     font-size: 18px;
     text-decoration: none;
@@ -138,6 +139,11 @@ button {
 button a {
     color:var(--white);
     text-decoration: none;
+    display: inline-block;     
+    position: relative;    
+    z-index: 1;     
+    padding: 2em;     
+    margin: -2em; 
 }
 
 .buttonGray {
@@ -162,7 +168,7 @@ button a {
 
 #schedule {
     position: absolute;
-    top: 5%;
+    top: 4%;
     left: 75%;
 }
 
