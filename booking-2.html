@@ -64,7 +64,9 @@
     </div>
     <!-- Sidebar End -->
 
+    <!-- Appt. Container Start -->
     <div class="appt-container">
+
         <img src="images/stepper2.png" alt="2. Schedule Appointment""></img>
         <br></br><br></br>
 
@@ -74,37 +76,45 @@
             cost. <br> Appointments are ONLY available in one week increments and refresh every Friday at 11:59PM. 
         </p>
 
-        <p id="displayTypePlace"></p>
+        <p id="displayApptType"></p>
 
-        <select class="custom-select" id="dateSel">
-            <option value="Monday">Monday</option>
-            <option value="Tuesday">Tuesday</option>
-            <option value="Wednesday">Wednesday</option>
-            <option value="Thursday">Thursday</option>
-            <option value="Friday">Friday</option>
-        </select>
+        <!-- Appt. Form (2) Schedule Appt Start 
+             TO-DO: Fix required functionality 
+                    Integrate timeslots !-->
+        <form> 
+            <select class="custom-select" id="dateSel">
+                <option name="date" value="Monday">Monday</option>
+                <option name="date" value="Tuesday">Tuesday</option>
+                <option name="date" value="Wednesday">Wednesday</option>
+                <option name="date" value="Thursday">Thursday</option>
+                <option name="date" value="Friday">Friday</option>
+            </select>
 
-        <select class="custom-select" id="timeSel">
-            <option value="08:15">08:15 AM</option>
-            <option value="08:30">08:30 AM</option>
-            <option value="9:30">9:30 AM</option>
-            <option value="1:30">1:30 PM</option>
-            <option value="2:00">2:00 PM</option>
-        </select>
+            <select class="custom-select" id="timeSel">
+                <option value="8:15 AM">08:15 AM</option>
+                <option value="8:30 AM">08:30 AM</option>
+                <option value="9:30 AM">9:30 AM</option>
+                <option value="1:30 PM">1:30 PM</option>
+                <option value="2:00 PM">2:00 PM</option>
+            </select>
 
-        <br></br>
+            <br></br>
 
-        <button class="buttonGray">
-            <a href="booking-1.html">Back</a>
-        </button>
-        <button class="buttonGray">
-            <a href="index.html">Cancel</a>
-        </button>
-        <button class="buttonRed" onclick="saveTimeDate()">
-            <a href="booking-3.html">Continue</a>
-        </button>
+            <!-- Buttons Start -->
+            <button class="buttonGray">
+                <a href="booking-1.html">Back</a>
+            </button>
+            <button class="buttonGray">
+                <a href="index.html">Cancel</a>
+            </button>
+            <button type="submit" class="buttonRed" onclick="saveTime()">
+                <a href="booking-3.html">Continue</a>
+            </button>
+            <!-- Buttons End -->
+        </form>
+        <!-- Appt Form (2) End-->
     </div>
+    <!-- Appt. Container End -->
 
 </body>
-
 </html>

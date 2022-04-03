@@ -44,12 +44,12 @@ function saveApptType() {
     apptLocation = "UHS (University Health Services)"
     )
     // Store type and place  
-    localStorage.setItem("storeType", JSON.stringify(apptType));
-    localStorage.setItem("storePlace", JSON.stringify(apptLocation));
+    localStorage.setItem("apptType", JSON.stringify(apptType));
+    localStorage.setItem("apptLocation", JSON.stringify(apptLocation));
 }
 
 /* Booking 2: Timeslots */
-function saveTimeDate() {
+function saveTime() {
     // Retrieve user input for timeslot
     var timeSelect = document.getElementById("timeSel");
     var timeInput = timeSelect.options[timeSelect.selectedIndex].text;
@@ -64,14 +64,12 @@ function saveTimeDate() {
 }
 
 function loadBooking2() {
-    var seeType = JSON.parse(localStorage.getItem("storeType"));
-    var seePlace = JSON.parse(localStorage.getItem("storePlace"));
+    var apptType = JSON.parse(localStorage.getItem("apptType"));
+    var apptLocation = JSON.parse(localStorage.getItem("apptLocation"));
 
-    document.getElementById("displayTypePlace").innerHTML 
-        = "Schedule <strong>" + seeType + " </strong> at <strong>" 
-        + seePlace + "</strong>";
-    
-    saveTimeDate();
+    document.getElementById("displayApptType").innerHTML 
+        = "Schedule <strong>" + apptType + " </strong> at <strong>" 
+        + apptLocation + "</strong>";
 }
 
 /* Booking 3: Confirmation */
@@ -89,8 +87,8 @@ function loadBooking3() {
     var newAppt = new Appointment (
         JSON.parse(localStorage.getItem("storeTime")),
         JSON.parse(localStorage.getItem("storeDate")),
-        JSON.parse(localStorage.getItem("storeType")),
-        JSON.parse(localStorage.getItem("storePlace")),
+        JSON.parse(localStorage.getItem("apptType")),
+        JSON.parse(localStorage.getItem("apptLocation")),
         "", "Change Appointment"
     )
 
