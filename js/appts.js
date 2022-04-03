@@ -1,5 +1,5 @@
 function loadAppts() {
-    appts = JSON.parse(sessionStorage.getItem("appts"));
+    appts = JSON.parse(localStorage.getItem("appts"));
     console.log(appts);
 
     let html = "<table border='1|1'";
@@ -21,7 +21,7 @@ function loadAppts() {
 /* Cancel selected Appointment */
 function cancelAppt(i) {
     appts.splice(i, 1);
-    sessionStorage.setItem("appts", JSON.stringify(appts));
+    localStorage.setItem("appts", JSON.stringify(appts));
 }
 
 
