@@ -1,4 +1,17 @@
-.table {
-    width: 100%;
-    border: 3px solid var(--red);
+#appts {
+    text-align: left;
+    border-collapse: collapse;
+    border-spacing: 0;
+    border: 2px solid var(--gray);
+    display: block;
+    width: 850px;
+    margin: 0 auto;
+    padding: 10px 17px;
+    -webkit-box-shadow: 2px 2px 3px -1px rgba(0,0,0,0.35);
+    margin: 0 auto;
+    margin-bottom: 15px;
+}
+
+#appts td {
+  padding: 15px 10px;
 }

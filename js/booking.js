@@ -23,8 +23,8 @@ function saveApptType() {
     apptLocation = "UHS (University Health Services)"
     )
     // Store type and location  
-    localStorage.setItem("apptType", JSON.stringify(apptType));
-    localStorage.setItem("apptLocation", JSON.stringify(apptLocation));
+    sessionStorage.setItem("apptType", JSON.stringify(apptType));
+    sessionStorage.setItem("apptLocation", JSON.stringify(apptLocation));
 }
 
 /* Booking 2: Schedule Appt */
@@ -38,14 +38,14 @@ function saveApptTime() {
     let apptDate = document.getElementById("dateSel").value;
 
     // Store time and date
-    localStorage.setItem("apptTime", JSON.stringify(apptTime));
-    localStorage.setItem("apptDate", JSON.stringify(apptDate));
+    sessionStorage.setItem("apptTime", JSON.stringify(apptTime));
+    sessionStorage.setItem("apptDate", JSON.stringify(apptDate));
 }
 
 // Display previously selected appointment type and location 
 function displayApptType() {
-    let apptType = JSON.parse(localStorage.getItem("apptType"));
-    let apptLocation = JSON.parse(localStorage.getItem("apptLocation"));
+    let apptType = JSON.parse(sessionStorage.getItem("apptType"));
+    let apptLocation = JSON.parse(sessionStorage.getItem("apptLocation"));
 
     document.getElementById("displayApptType").innerHTML 
         = "Schedule <strong>" + apptType + " </strong> at <strong>" 
@@ -58,11 +58,11 @@ function displayApptConfirmation() {
     
     // Create new appointment based on user input
     let newAppt = new Appointment(
-        JSON.parse(localStorage.getItem("apptTime")),
-        JSON.parse(localStorage.getItem("apptDate")),
-        JSON.parse(localStorage.getItem("apptType")),
-        JSON.parse(localStorage.getItem("apptLocation")),
-        "", "Edit"
+        JSON.parse(sessionStorage.getItem("apptTime")),
+        JSON.parse(sessionStorage.getItem("apptDate")),
+        JSON.parse(sessionStorage.getItem("apptType")),
+        JSON.parse(sessionStorage.getItem("apptLocation")),
+        " ", "Edit"
     )
 
     // Display appointment details 
@@ -76,7 +76,7 @@ function displayApptConfirmation() {
         "<strong>Location:</strong> " + newAppt.location;
 
     // Retrieve existing appts and push new appt into array
-    let appts = JSON.parse(localStorage.getItem("appts")) || [];
+    let appts = JSON.parse(sessionStorage.getItem("appts")) || [];
     appts.push(newAppt);
-    localStorage.setItem("appts", JSON.stringify(appts));
+    sessionStorage.setItem("appts", JSON.stringify(appts));
 }

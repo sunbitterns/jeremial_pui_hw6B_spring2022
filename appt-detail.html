@@ -14,22 +14,23 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
     <!-- scripts -->
     <script src="https://kit.fontawesome.com/ee365708f3.js" crossorigin="anonymous"></script>
-    <script src="main.js"></script>
+    <script src="js/appts.js"></script>
+    <script src="js/booking.js"></script>
 </head>
 
 <body onload = "loadDetail()">
 
+    <!-- Navigation Bar Start -->
     <div class="nav-container">
         <nav>
             <div class="logo">
                 <a href="index.html">HealthConnect</a>
             </div>
-
+            
             <ul class="nav-items">
                 <li>
                     <a href="#">Andrew Carnegie</a>
                 </li>
-
                 <li>
                     <a class="nav-btn-container" href="index.html">
                         <img class="dropdown" src="images/dropdown.png" alt="dropdown">
@@ -38,7 +39,9 @@
             </ul>
         </nav>
     </div>
+    <!-- Navigation Bar End -->
     
+    <!-- Sidebar Start -->
     <div class="sidebar">
         <ul>
             <li>
@@ -64,6 +67,7 @@
 
         </ul>
     </div>
+    <!-- Sidebar End -->
 
     <button class="block">
         <a href="appointments.html">
@@ -87,20 +91,6 @@
                 <h3 id="timeProp"></h3>
                 <h3 id="typeProp"></h3>
                 <h3 id="placeProp"></h3>
-
-                <br></br>
-                <br></br>
-        
-                <!--<h2>
-                     <b>Date:</b>
-                        <a href="#">Wednesday, February 9th, 2022</a>
-                        <i class="fa-solid fa-calendar-plus fa-sm"></i><br>
-                    <b>Time:</b> 9:50 AM<br>
-                    <b>Visit Type:</b> COVID-19 Booster (Pfizer)<br>
-                    <b>Location:</b>
-                        <a href="#">UHS (University Health Services)</a>
-                        <i class="fa-solid fa-location-dot fa-sm"></i><br>
-                </h2>-->
 
                 <button class="buttonGray"">
                     <a href="#">Cancel Appointment</a>

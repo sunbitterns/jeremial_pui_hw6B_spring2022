@@ -1,6 +1,17 @@
-function loadAppts() {
-    appts = JSON.parse(localStorage.getItem("appts"));
-    console.log(appts);
+/* Sort array based on date & time
+   Citation: https://stackoverflow.com/questions/6913512/how-to-sort-an-array-of-objects-by-multiple-fields
+*/
+function sortAppts(appts) {
+    appts.sort(function (a, b) {
+        return a.date.localeCompare(b.date) || b.time - a.time;
+    });
+}
+
+/* Generate a table from the appointments array
+   Citation: https://stackoverflow.com/questions/29335369/display-array-of-objects-in-a-dynamic-table-javascript
+*/
+function generateApptTable() {
+    let appts = JSON.parse(sessionStorage.getItem("appts"));
 
     let html = "<table border='1|1'";
     for (let i = 0; i < appts.length; i++) {
@@ -10,76 +21,30 @@ function loadAppts() {
         html+="<td>"+appts[i].type+"</td>";
         html+="<td>"+appts[i].location+"</td>";
         html+="<td>"+appts[i].comment+"</td>";
-        html+="<td>"+appts[i].details+"</td>";
+        if (appts[i].details == "Edit") {
+            html+="<td><a href='appt-detail.html'>"+appts[i].details+"</a></td>";
+        } else { // View Results
+            html+="<td><a href='#'>"+appts[i].details+"</a></td>";
+        }
         html+="<tr>";
     }
     html+="</table>";
     document.getElementById("appts").innerHTML = html;
+}
 
+/* Load appointments */
+function loadAppts() {
+    let appts = JSON.parse(sessionStorage.getItem("appts"));
+    if (appts == null || appts == []) {
+        document.getElementById("appts").innerHTML = 
+        "No appointment history."
+    } else {
+        generateApptTable();
+    }
 }
 
 /* Cancel selected Appointment */
 function cancelAppt(i) {
     appts.splice(i, 1);
-    localStorage.setItem("appts", JSON.stringify(appts));
+    sessionStorage.setItem("appts", JSON.stringify(appts));
 }
-
-
-// All Appointments
-/* function loadApptList() {
-    var allAppts = JSON.parse(localStorage.getItem("newApptList"));
-    console.log(allAppts);
-    if (allAppts == null) {
-        var apptNumber = 0;
-    } else {
-        apptNumber = allAppts.length;
-        
-        // Display number of appointments 
-        document.getElementById("apptN").innerHTML = 
-        "Appointments (" + apptNumber + ")";
-
-        document.getElementById("apptList").innerHTML = 
-            allAppts[apptNumber-1].date + " at " 
-            + allAppts[apptNumber-1].time + "<br>" + 
-            allAppts[apptNumber-1].type + 
-            "<br> <a href='appt-detail.html'>View/Change Appointment</a> <br></br>"
-    }
-}
-
-function loadDetail() {
-    var appts = JSON.parse(localStorage.getItem("newApptList"));
-    var selectedAppt = appts[appts.length - 1];
-    // Display appointment details 
-    document.getElementById("dateProp").innerHTML = 
-        "<strong>Date:</strong> " + selectedAppt.date;
-    document.getElementById("timeProp").innerHTML = 
-        "<strong>Time:</strong> "+ selectedAppt.time;
-    document.getElementById("typeProp").innerHTML = 
-        "<strong>Visit Type:</strong> " + selectedAppt.type;
-    document.getElementById("placeProp").innerHTML = 
-        "<strong>Location:</strong> " + selectedAppt.place;
-}
-
-function loadAppointments() {
-    let 
-}
-
-
-Appointment History 
-let appt1 = new Appointment (
-    "8:30 AM", 
-    "1/5/2022",
-    "Tartan SARS-CoV-2 Assay",
-    "TTS",
-    "NEGATIVE",
-    "View Report"
-)
-
-let appt2 = new Appointment (
-    "8:30 AM", 
-    "1/5/2022",
-    "Tartan SARS-CoV-2 Assay",
-    "TTS",
-    "NEGATIVE",
-    "View Report"
-)*/
