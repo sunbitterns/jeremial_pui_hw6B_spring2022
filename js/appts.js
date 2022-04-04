@@ -11,7 +11,9 @@ function sortAppts(appts) {
    Citation: https://stackoverflow.com/questions/29335369/display-array-of-objects-in-a-dynamic-table-javascript
 */
 function generateApptTable() {
-    let appts = JSON.parse(sessionStorage.getItem("appts"));
+    let appts = JSON.parse(localStorage.getItem("appts"));    
+    sortAppts(appts);
+    localStorage.setItem("appts", JSON.stringify(appts));
 
     let html = "<table border='1|1'";
     for (let i = 0; i < appts.length; i++) {
@@ -20,31 +22,61 @@ function generateApptTable() {
         html+="<td>"+appts[i].time+"</td>";
         html+="<td>"+appts[i].type+"</td>";
         html+="<td>"+appts[i].location+"</td>";
-        html+="<td>"+appts[i].comment+"</td>";
-        if (appts[i].details == "Edit") {
-            html+="<td><a href='appt-detail.html'>"+appts[i].details+"</a></td>";
-        } else { // View Results
-            html+="<td><a href='#'>"+appts[i].details+"</a></td>";
-        }
-        html+="<tr>";
+        html+="<td><button class='buttonRed' onclick='getIndex(this)'>"+
+        "<a href='appt-detail.html'>Edit</a></button></td>";
+        html+="<tr>";     
     }
     html+="</table>";
+
+
     document.getElementById("appts").innerHTML = html;
 }
 
+function getIndex(element) {
+    let index = element.parentNode.parentNode.rowIndex;
+    localStorage.setItem("apptIndex", JSON.stringify(index));
+}
+   
 /* Load appointments */
 function loadAppts() {
-    let appts = JSON.parse(sessionStorage.getItem("appts"));
+    let appts = JSON.parse(localStorage.getItem("appts"));
     if (appts == null || appts == []) {
         document.getElementById("appts").innerHTML = 
         "No appointment history."
     } else {
         generateApptTable();
-    }
+    }    
 }
 
 /* Cancel selected Appointment */
 function cancelAppt(i) {
     appts.splice(i, 1);
-    sessionStorage.setItem("appts", JSON.stringify(appts));
+    localStorage.setItem("appts", JSON.stringify(appts));
+}
+
+/* Load appointment detail */
+function loadApptDetail() {
+    let appts = JSON.parse(localStorage.getItem("appts"));
+    let apptIndex = localStorage.getItem("apptIndex");
+
+    let selAppt = "";
+    if (apptIndex == 0) {
+        selAppt = appts[0];
+    } else {
+        selAppt = appts[apptIndex/2];
+    }
+
+    console.log(appts);
+    console.log(apptIndex);
+    console.log(selAppt);
+
+    // Display appointment details 
+    document.getElementById("dateProp").innerHTML = 
+        "<strong>Date:</strong> " + selAppt.date;
+    document.getElementById("timeProp").innerHTML = 
+        "<strong>Time:</strong> "+ selAppt.time;
+    document.getElementById("typeProp").innerHTML = 
+        "<strong>Visit Type:</strong> " + selAppt.type;
+    document.getElementById("locationProp").innerHTML = 
+        "<strong>Location:</strong> " + selAppt.location;
 }
