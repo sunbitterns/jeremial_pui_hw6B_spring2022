@@ -44,17 +44,16 @@ function loadAppts() {
     appts = JSON.parse(localStorage.getItem("appts"));
     if (appts == null || appts == []) {
         document.getElementById("appts").innerHTML = 
-        "No appointment history."
+        "No upcoming appointments."
     } else {
         generateApptTable();
     }    
 }
 
-/* Cancel selected Appointment */
+/* Cancel selected appointment */
 function cancelAppt(i) {
     appts.splice(i, 1);
     localStorage.setItem("appts", JSON.stringify(appts));
-    //location.reload();
 }
 
 /* Load appointment detail */
@@ -64,12 +63,9 @@ function loadApptDetail() {
 
     /* Retrieve selected appt
        Not sure why my indices are by doubles...*/
-    let selAppt = "";
-    if (apptIndex == 0) {
-        selAppt = appts[0];
-    } else {
-        selAppt = appts[apptIndex/2];
-    }
+    let selAppt;
+    if (apptIndex != 0) apptIndex /= 2;
+    selAppt = appts[apptIndex];
 
     // Display appointment details 
     document.getElementById("dateProp").innerHTML = 
