@@ -1,4 +1,11 @@
 let appts;
+let tableDefault = "<table>"+
+    "<tr><th>Date</th>"+
+    "<th>Time</th>"+
+    "<th>Appointment Type</th>"+
+    "<th>Location</th>"+
+    "<th>Comment</th>"+
+    "<th>Details</th></tr>";
 
 /* Sort array based on date & time
    Citation: https://stackoverflow.com/questions/6913512/how-to-sort-an-array-of-objects-by-multiple-fields
@@ -17,15 +24,34 @@ function generateApptTable() {
     sortAppts(appts);
     localStorage.setItem("appts", JSON.stringify(appts));
 
-    let html = "<table border='1|1'";
+    let html = tableDefault;
+    let style;
+
     for (let i = 0; i < appts.length; i++) {
+
+        // Gray out past appointments
+        if (appts[i].comment != "") {
+            style = "<td class='pastAppt'>";
+        } else {
+            style = "<td>";
+        }
+
         html+="<tr>";
-        html+="<td>"+appts[i].date+"</td>";
-        html+="<td>"+appts[i].time+"</td>";
-        html+="<td>"+appts[i].type+"</td>";
-        html+="<td>"+appts[i].location+"</td>";
-        html+="<td><button class='buttonRed' onclick='getIndex(this)'>"+
-        "<a href='appt-detail.html'>Edit</a></button></td>";
+        html+=style+appts[i].date+"</td>";
+        html+=style+appts[i].time+"</td>";
+        html+=style+appts[i].type+"</td>";
+        html+=style+appts[i].locAbbr+"</td>";
+        html+=style+appts[i].comment+"</td>";
+
+        // Edit or View Report options 
+        if (appts[i].details == "Edit") {
+            html+=style+"<button id='btnEdit' onclick='getIndex(this)'>"+
+            "<a href='appt-detail.html'>Edit</a></button></td>";
+        } else { // View Report
+            html+=style+"<button id='btnEdit' onclick='getIndex(this)'>"+
+            "<a href='#'>View Report</a></button></td>";
+        }
+        
         html+="<tr>";     
     }
     html+="</table>";
@@ -35,16 +61,16 @@ function generateApptTable() {
 
 /* Get index from button row */
 function getIndex(element) {
-    let index = element.parentNode.parentNode.rowIndex;
+    let index = (element.parentNode.parentNode.rowIndex) - 1;
     localStorage.setItem("apptIndex", JSON.stringify(index));
 }
-   
+
 /* Load appointments */
 function loadAppts() {
-    appts = JSON.parse(localStorage.getItem("appts"));
-    if (appts == null || appts == []) {
-        document.getElementById("appts").innerHTML = 
-        "No upcoming appointments."
+    appts = JSON.parse(localStorage.getItem("appts")) || [];
+    if (appts.length == 0) {
+        document.getElementById("existingAppt").innerHTML = 
+        "No upcoming appointments";
     } else {
         generateApptTable();
     }    
@@ -63,9 +89,7 @@ function loadApptDetail() {
 
     /* Retrieve selected appt
        Not sure why my indices are by doubles...*/
-    let selAppt;
-    if (apptIndex != 0) apptIndex /= 2;
-    selAppt = appts[apptIndex];
+    let selAppt = appts[apptIndex/2];
 
     // Display appointment details 
     document.getElementById("dateProp").innerHTML = 
@@ -79,5 +103,5 @@ function loadApptDetail() {
 
     // Cancel button functionality
     let cancelBtn = document.getElementById("cancel");
-    cancelBtn.setAttribute("onclick", `cancelAppt("${apptIndex}")`);
+    cancelBtn.setAttribute("onclick", `cancelAppt("${apptIndex-1}")`);
 }

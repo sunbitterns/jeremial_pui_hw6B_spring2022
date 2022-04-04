@@ -1,9 +1,11 @@
 // Appointment Constructor
-function Appointment (time, date, type, location, details) {
+function Appointment (time, date, type, location, locAbbr, comment, details) {
     this.time = time;
     this.date = date;
     this.type = type;
     this.location = location;
+    this.locAbbr = locAbbr;
+    this.comment = comment;
     this.details = details;
 }
 
@@ -15,15 +17,19 @@ function saveApptType() {
     let apptType = document.getElementById("type").value;
 
     // Set location based on type of appointment 
-    let apptLocation = "";
+    let apptLocation; 
+    let locAbbr;
     if (apptType == "Tartan Testing") {
         apptLocation = "TCS (Tata Consultancy Services)";
-    } else ( // Booster or Vaccine
-    apptLocation = "UHS (University Health Services)"
-    )
+        locAbbr = "TCS";
+    } else { // Booster or Vaccine
+        apptLocation = "UHS (University Health Services)";
+        locAbbr = "UHS";
+    }
     // Store type and location  
     localStorage.setItem("apptType", JSON.stringify(apptType));
     localStorage.setItem("apptLocation", JSON.stringify(apptLocation));
+    localStorage.setItem("locAbbr", JSON.stringify(locAbbr));
 }
 
 /* Booking 2: Schedule Appt */
@@ -51,7 +57,38 @@ function displayApptType() {
         + apptLocation + "</strong>";
 }
 
+
 /* Booking 3: Confirmation */
+
+/* !!!Not Working
+   Create some appointment history 
+function initPastAppts() {
+
+    let appt1 = new Appointment(
+        "1:30PM",
+        "12/6/2021",
+        "Tartan SARS-CoV-2 Assay",
+        "Tata Consultancy Services (TTS)",
+        "TTS",
+        "NEGATIVE",
+        "View Report"
+    )
+
+    let appt2 = new Appointment(
+        "11:00PM",
+        "1/5/2021",
+        "Tartan SARS-CoV-2 Assay",
+        "Tata Consultancy Services (TTS)",
+        "TTS",
+        "NEGATIVE",
+        "View Report"
+    )
+
+    appts.push(appt1);
+    appts.push(appt2);
+    appts = localStorage.setItem("appts", JSON.stringify(appts));
+}*/
+
 // Display selected appointment details
 function displayApptConfirmation() {
     
@@ -61,7 +98,8 @@ function displayApptConfirmation() {
         JSON.parse(localStorage.getItem("apptDate")),
         JSON.parse(localStorage.getItem("apptType")),
         JSON.parse(localStorage.getItem("apptLocation")),
-        "Edit", ""
+        JSON.parse(localStorage.getItem("locAbbr")),
+        "", "Edit"
     )
 
     // Display appointment details 
@@ -79,3 +117,4 @@ function displayApptConfirmation() {
     appts.push(newAppt);
     localStorage.setItem("appts", JSON.stringify(appts));
 }
+

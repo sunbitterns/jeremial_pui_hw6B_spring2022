@@ -146,6 +146,17 @@ button a {
     margin: -2em; 
 }
 
+#btnEdit {
+    padding: 0px;
+    background-color: transparent;
+}
+
+#btnEdit a {
+    color: var(--red);
+    background-color: transparent;
+    text-decoration: underline;
+}
+
 .buttonGray {
     background-color: var(--gray);
     color: var(--white);

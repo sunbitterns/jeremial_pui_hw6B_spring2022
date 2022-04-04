@@ -1,17 +1,30 @@
 #appts {
-    text-align: left;
-    border-collapse: collapse;
-    border-spacing: 0;
-    border: 2px solid var(--gray);
-    display: block;
-    width: 850px;
-    margin: 0 auto;
-    padding: 10px 17px;
-    -webkit-box-shadow: 2px 2px 3px -1px rgba(0,0,0,0.35);
-    margin: 0 auto;
-    margin-bottom: 15px;
+  margin-top: 80px;
+  table-layout: fixed;
+  width: 1080px;
+  text-align: left;
+  border-collapse: collapse;
+  border: 2px solid var(--gray);
+  -webkit-box-shadow: 2px 2px 3px -1px rgba(0,0,0,0.35);
 }
 
 #appts td {
-  padding: 15px 10px;
+  border: solid;
+  border-width: 1px 0;
+  padding: 15px 0px 25px 15px;
+}
+
+.pastAppt{
+  background-color: var(--sidebar);
+}
+
+#appts th {
+  background-color: var(--light-gray);
+  font-style: bold;
+  padding: 20px 0px 25px 15px;
+}
+
+#existingAppt {
+  font-size: 20px;
+  margin-top: 80px;
 }
