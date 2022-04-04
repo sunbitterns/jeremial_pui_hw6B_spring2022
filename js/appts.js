@@ -1,4 +1,4 @@
-let appts;
+let appts = [];
 let tableDefault = "<table>"+
     "<tr><th>Date</th>"+
     "<th>Time</th>"+
@@ -6,6 +6,36 @@ let tableDefault = "<table>"+
     "<th>Location</th>"+
     "<th>Comment</th>"+
     "<th>Details</th></tr>";
+
+/* Create some appointment history */
+function initPastAppts() {
+
+    let appt1 = new Appointment(
+        "1:30 PM",
+        "12/6/2021",
+        "Tartan SARS-CoV-2 Assay",
+        "Tata Consultancy Services (TTS)",
+        "TTS",
+        "NEGATIVE",
+        "View Report"
+    )
+
+    let appt2 = new Appointment(
+        "11:00 PM",
+        "1/5/2021",
+        "Tartan SARS-CoV-2 Assay",
+        "Tata Consultancy Services (TTS)",
+        "TTS",
+        "NEGATIVE",
+        "View Report"
+    )
+    
+    appts.push(appt1);
+    appts.push(appt2);
+    localStorage.setItem("appts", JSON.stringify(appts));
+    return appts;
+}
+
 
 /* Sort array based on date & time
    Citation: https://stackoverflow.com/questions/6913512/how-to-sort-an-array-of-objects-by-multiple-fields
@@ -20,7 +50,8 @@ function sortAppts(appts) {
    Citation: https://stackoverflow.com/questions/29335369/display-array-of-objects-in-a-dynamic-table-javascript
 */
 function generateApptTable() {
-    appts = JSON.parse(localStorage.getItem("appts"));    
+    appts = JSON.parse(localStorage.getItem("appts"));   
+    console.log(appts); 
     sortAppts(appts);
     localStorage.setItem("appts", JSON.stringify(appts));
 
@@ -67,10 +98,12 @@ function getIndex(element) {
 
 /* Load appointments */
 function loadAppts() {
-    appts = JSON.parse(localStorage.getItem("appts")) || [];
+    appts = JSON.parse(localStorage.getItem("appts")) || initPastAppts();
+    document.getElementById("upcomingNum").innerHTML = 
+        "Upcoming Appointments (" + (appts.length - 2) + ")";
     if (appts.length == 0) {
         document.getElementById("existingAppt").innerHTML = 
-        "No upcoming appointments";
+        "No appointments";
     } else {
         generateApptTable();
     }    
@@ -85,11 +118,12 @@ function cancelAppt(i) {
 /* Load appointment detail */
 function loadApptDetail() {
     appts = JSON.parse(localStorage.getItem("appts"));
-    let apptIndex = localStorage.getItem("apptIndex");
-
+    
     /* Retrieve selected appt
        Not sure why my indices are by doubles...*/
-    let selAppt = appts[apptIndex/2];
+    let apptIndex = localStorage.getItem("apptIndex")/2;
+    let selAppt = appts[apptIndex];
+    console.log(apptIndex);
 
     // Display appointment details 
     document.getElementById("dateProp").innerHTML = 
@@ -103,5 +137,5 @@ function loadApptDetail() {
 
     // Cancel button functionality
     let cancelBtn = document.getElementById("cancel");
-    cancelBtn.setAttribute("onclick", `cancelAppt("${apptIndex-1}")`);
+    cancelBtn.setAttribute("onclick", `cancelAppt("${apptIndex}")`);
 }

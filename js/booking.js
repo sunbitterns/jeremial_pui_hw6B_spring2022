@@ -60,35 +60,6 @@ function displayApptType() {
 
 /* Booking 3: Confirmation */
 
-/* !!!Not Working
-   Create some appointment history 
-function initPastAppts() {
-
-    let appt1 = new Appointment(
-        "1:30PM",
-        "12/6/2021",
-        "Tartan SARS-CoV-2 Assay",
-        "Tata Consultancy Services (TTS)",
-        "TTS",
-        "NEGATIVE",
-        "View Report"
-    )
-
-    let appt2 = new Appointment(
-        "11:00PM",
-        "1/5/2021",
-        "Tartan SARS-CoV-2 Assay",
-        "Tata Consultancy Services (TTS)",
-        "TTS",
-        "NEGATIVE",
-        "View Report"
-    )
-
-    appts.push(appt1);
-    appts.push(appt2);
-    appts = localStorage.setItem("appts", JSON.stringify(appts));
-}*/
-
 // Display selected appointment details
 function displayApptConfirmation() {
     

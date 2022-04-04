@@ -1,5 +1,4 @@
 #appts {
-  margin-top: 80px;
   table-layout: fixed;
   width: 1080px;
   text-align: left;
@@ -26,5 +25,4 @@
 
 #existingAppt {
   font-size: 20px;
-  margin-top: 80px;
 }
